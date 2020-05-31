@@ -1,2 +1,2 @@
-npm i
-nodemon hello
+#npm i
+#nodemon hello
