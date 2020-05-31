@@ -29,7 +29,7 @@ class Question extends React.PureComponent {
 
 const element3 = React.createElement(
     Question,
-    {question: 'I am PureComponent'},
+    {question: 'Am I PureComponent?'},
     null
 )
 const FunctionComponent = () => {
