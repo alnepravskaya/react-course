@@ -1,12 +1,9 @@
-npm i<br/>
-nodemon hello
 
-
- [X] Core concepts
- [ ] Webpack
- [ ] Component 
- [ ] Testing
- [ ] Flux + Redux
- [ ] Routing
- [ ] Server-Side Rendering
- [ ] Useful libraries
+ [X] Core concepts<br/>
+ [ ] Webpack<br/>
+ [ ] Component <br/>
+ [ ] Testing<br/>
+ [ ] Flux + Redux<br/>
+ [ ] Routing<br/>
+ [ ] Server-Side Rendering<br/>
+ [ ] Useful libraries<br/>
