@@ -1,35 +1,46 @@
-const element1 = window.React.createElement(
+import React from 'react';
+import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
+
+const element1 = React.createElement(
     'div',
-    {className:'question'},
+    {className:'question', key:'1'},
     'Hello! What is your name?'
 );
 
-class Answer extends window.React.Component {
+class Answer extends React.Component {
     render() {
-        return window.React.createElement('div', {className:'text'}, ` ${this.props.answer}`);
+        return React.createElement('div', {className:'text'}, ` ${this.props.answer}`);
     }
 }
 
-const element2 = window.React.createElement(
+Answer.propTypes = {
+    answer: PropTypes.string
+};
+
+const element2 = React.createElement(
     Answer,
-    {answer: 'Alena'},
+    {answer: 'Alena', key:'2'},
     null
 );
 
-class Question extends window.React.PureComponent {
+class Question extends React.PureComponent {
     render() {
-        return window.React.createElement('div', null, ` ${this.props.question}`);
+        return React.createElement('div', {}, `${this.props.question}`);
     }
 }
+Question.propTypes = {
+    question: PropTypes.string
+};
 
-const element3 = window.React.createElement(
+const element3 = React.createElement(
     Question,
-    {question: 'Am I PureComponent?'},
+    {question: 'Am I PureComponent?', key:'3'},
     null
 );
 const FunctionComponent = () => {
-    return window.React.createElement('div', null, ' I am FunctionComponent');
+    return React.createElement('div', { key:'4'}, ' I am FunctionComponent');
 };
 
-window.ReactDOM.render( [element1, element2, element3, FunctionComponent()], document.body );
+ReactDOM.render( [element1, element2, element3, FunctionComponent()], document.getElementById('root') );
 
