@@ -1,6 +1,6 @@
 
  [X] Core concepts<br/>
- [ ] Webpack<br/>
+ [X] Webpack<br/>
  [ ] Component <br/>
  [ ] Testing<br/>
  [ ] Flux + Redux<br/>
