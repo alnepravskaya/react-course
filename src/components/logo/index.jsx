@@ -7,3 +7,4 @@ export const Logo = (props) => {
            <span className={style.bold}>netflix</span>roulette
         </div>
 }
+

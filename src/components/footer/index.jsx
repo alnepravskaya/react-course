@@ -7,3 +7,4 @@ export const Footer = () => {
         <Logo className={style.logo}/>
     </div>
 }
+

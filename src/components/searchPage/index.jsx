@@ -35,3 +35,4 @@ export class SearchPage extends React.Component {
         </ErrorBoundary>
     }
 }
+

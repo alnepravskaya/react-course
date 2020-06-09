@@ -53,3 +53,4 @@ class MoviePage extends React.Component {
     }
 }
 export default withRouter(MoviePage)
+
