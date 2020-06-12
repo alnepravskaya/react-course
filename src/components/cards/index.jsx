@@ -1,8 +1,8 @@
-import React from "react";
-import style from "./style.less"
-import {Card} from "./companents/card"
-import cx from 'classnames'
-
+import React from 'react';
+import style from './style.less';
+import {Card} from './companents/card';
+import cx from 'classnames';
+import PropTypes from 'prop-types';
 
 export const Cards = (props) => (
     <>
@@ -11,7 +11,7 @@ export const Cards = (props) => (
             <div className="wrapper">
                 <div className={style.alignment}>
                     {props.cards.map((posts, i) => {
-                        return <Card posts={posts} key={i}/>
+                        return <Card posts={posts} key={i}/>;
                     })}
                 </div>
             </div>
@@ -23,5 +23,8 @@ export const Cards = (props) => (
         </div>
         }
     </>
-)
+);
 
+Cards.propTypes = {
+    cards: PropTypes.array,
+};

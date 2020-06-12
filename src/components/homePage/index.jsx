@@ -1,14 +1,12 @@
-import React from "react";
-import style from "./style.less"
-import cx from 'classnames'
-import Search from "../search";
-import {Cards} from "../cards";
-import {ErrorBoundary} from "react-error-boundary";
+import React from 'react';
+import Search from '../search';
+import {Cards} from '../cards';
+import {ErrorBoundary} from 'react-error-boundary';
 
 export class HomePage extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {cards: [], cardsLength: 0}
+        this.state = {cards: [], cardsLength: 0};
     }
 
     render() {
@@ -17,7 +15,7 @@ export class HomePage extends React.Component {
                 <Search cardsLength={this.state.cardsLength}/>
                 <Cards cards={this.state.cards}/>
             </div>
-        </ErrorBoundary>
+        </ErrorBoundary>;
     }
 }
 

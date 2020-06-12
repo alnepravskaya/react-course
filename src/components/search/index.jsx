@@ -1,10 +1,11 @@
-import React from "react";
-import style from "./style.less"
-import {Radiogroup} from "../radiogroup"
-import {Logo} from "../logo"
-import {GetMoviesList} from "../../api.service"
-import cx from "classnames";
-import {withRouter} from "react-router-dom";
+import React from 'react';
+import style from './style.less';
+import {Radiogroup} from '../radiogroup';
+import {Logo} from '../logo';
+import {GetMoviesList} from '../../api.service';
+import cx from 'classnames';
+import {withRouter} from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 class Search extends React.Component {
     constructor(props) {
@@ -14,15 +15,15 @@ class Search extends React.Component {
             searchByValue: props.match.params.searchBy || 'title',
             sortByValue: props.match.params.sortBy || 'vote_average',
             query: props.match.params.query || ''
-        }
+        };
         if (this.state.query) {
-            this.handleSubmit()
+            this.handleSubmit();
         }
     }
 
     handleSubmit(event) {
         event && event.preventDefault();
-        this.props.history.push(`/search/${this.state.searchByValue}/${this.state.sortByValue}/${this.state.query}`)
+        this.props.history.push(`/search/${this.state.searchByValue}/${this.state.sortByValue}/${this.state.query}`);
         GetMoviesList({
             value: this.state.query,
             searchByValue: this.state.searchByValue,
@@ -31,11 +32,11 @@ class Search extends React.Component {
     }
 
     changeActiveButton(value) {
-        this.setState({searchByValue: value})
+        this.setState({searchByValue: value});
     }
 
     changeActiveButtonSortBy(value) {
-        this.setState({sortByValue: value}, this.handleSubmit.bind(this))
+        this.setState({sortByValue: value}, this.handleSubmit.bind(this));
     }
 
 
@@ -64,7 +65,7 @@ class Search extends React.Component {
                         />
                         <input type="submit" value="Search" className={style.button}/>
                         <Radiogroup text="search by" buttons={buttonsSearchBy} value={this.state.searchByValue}
-                                    active={this.changeActiveButton.bind(this)}/>
+                            active={this.changeActiveButton.bind(this)}/>
                     </form>
                 </div>
 
@@ -73,13 +74,24 @@ class Search extends React.Component {
                 <div className={cx('wrapper', style.alignment, 'contentPadding')}>
                     {this.props.cardsLength !== 0 && <div className={style.info}>{this.props.cardsLength} movie found</div>}
                     <Radiogroup text="Sort by" buttons={buttonsSortBy} value={this.state.sortByValue}
-                                className={style.radiogroup}
-                                active={this.changeActiveButtonSortBy.bind(this)}/>
+                        className={style.radiogroup}
+                        active={this.changeActiveButtonSortBy.bind(this)}/>
                 </div>
             </div>
-        </div>
+        </div>;
     }
 }
+Search.propTypes = {
+    cardsLength: PropTypes.number,
+    match: PropTypes.shape({
+        params: PropTypes.shape({
+            searchBy: PropTypes.string,
+            sortBy: PropTypes.string,
+            query: PropTypes.string,
+        }),
+    }),
+    history: PropTypes.object
+};
 
-export default withRouter(Search)
+export default withRouter(Search);
 
