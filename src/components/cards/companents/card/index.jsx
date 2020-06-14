@@ -1,6 +1,6 @@
 import React from 'react';
 import style from './style.less';
-import noPoster from '../../../../source/img/no-poster.jpg';
+import noPoster from '../../../../assets/img/no-poster.jpg';
 import {Link} from 'react-router-dom';
 import {getMovieInfo} from '../../../../api.service';
 import PropTypes from 'prop-types';

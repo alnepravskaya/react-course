@@ -18,15 +18,16 @@ export class ErrorBoundary extends React.Component {
     }
 
     render() {
-        if (this.state.errorInfo) {
+        const {errorInfo, error} =this.state;
+        if (errorInfo) {
             // Error path
             return (
                 <div>
                     <h3>Something went wrong.</h3>
                     <details style={{ whiteSpace: 'pre-wrap' }}>
-                        {this.state.error && this.state.error.toString()}
+                        {error && error.toString()}
                         <br />
-                        {this.state.errorInfo.componentStack}
+                        {errorInfo.componentStack}
                     </details>
                 </div>
             );

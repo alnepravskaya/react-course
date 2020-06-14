@@ -9,7 +9,6 @@ import {ErrorBoundary} from 'react-error-boundary';
 import PropTypes from 'prop-types';
 
 
-
 class MoviePage extends React.Component {
     constructor(props) {
         super(props);
@@ -20,36 +19,34 @@ class MoviePage extends React.Component {
                 genres:''
             }
         };
-        this.gotMoviesListHandler = (event) => {
-            this.setState({
-                cards: event.detail.data
-            });
-        };
-        this.gotMovieInfoHandler = (event) =>{
-            this.setState({
-                selectedMovie: event.detail
-            });
-            GetMoviesList({
-                genres:this.state.selectedMovie.genres.join('%2C%20').replace(' ','%20')
-            });
-        };
-        document.body.addEventListener('gotMovieInfo', this.gotMovieInfoHandler);
-        document.body.addEventListener('gotMoviesList',this.gotMoviesListHandler);
-        if (this.state.selectedMovie.id) {
-            getMovieInfo(this.state.selectedMovie.id);
+    }
+
+    componentDidUpdate(prevProps) {
+        if (!prevProps || (prevProps && this.props.match.params.id !== prevProps.match.params.id)) {
+            this.selectedMovie(this.props.match.params.id);
         }
     }
 
-    componentWillUnmount() {
-        document.body.removeEventListener('gotMoviesList', this.gotMoviesListHandler);
-        document.body.removeEventListener('gotMovieInfo', this.gotMovieInfoHandler);
+    componentDidMount(){
+        this.selectedMovie();
     }
+
+    async selectedMovie(id){
+        const moviesId = id || this.state.selectedMovie.id;
+        const selectedMovie = await getMovieInfo(moviesId);
+        const cards  = await GetMoviesList({
+            genres: selectedMovie.genres
+        });
+        this.setState({selectedMovie, cards:cards.data});
+    }
+
     render() {
+        const {selectedMovie, cards} = this.state;
         return <ErrorBoundary>
             <div className={cx('header', style.movieHeader)}>
-                <Movie movie={this.state.selectedMovie}/>
+                <Movie movie={selectedMovie}/>
             </div>
-            <Cards cards={this.state.cards}/>
+            <Cards cards={cards}/>
         </ErrorBoundary>;
     }
 }

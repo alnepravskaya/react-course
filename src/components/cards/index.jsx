@@ -10,9 +10,7 @@ export const Cards = (props) => (
         <div className={style.cards}>
             <div className="wrapper">
                 <div className={style.alignment}>
-                    {props.cards.map((posts, i) => {
-                        return <Card posts={posts} key={i}/>;
-                    })}
+                    {props.cards.map((posts, i) => <Card posts={posts} key={i}/>)}
                 </div>
             </div>
         </div>

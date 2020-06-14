@@ -8,8 +8,7 @@ import {
     Route,
 } from 'react-router-dom';
 import MoviePage from './components/moviePage';
-import {SearchPage} from './components/searchPage';
-import {HomePage} from './components/homePage';
+import SearchPage from './components/searchPage';
 
 export const App = () =>  {
     return <Router>
@@ -20,8 +19,8 @@ export const App = () =>  {
             <Route path="/search/:searchBy/:sortBy/:query" >
                 <SearchPage/>
             </Route>
-            <Route path="/">
-                <HomePage/>
+            <Route path="" >
+                <SearchPage/>
             </Route>
         </Switch>
         <Footer/>

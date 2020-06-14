@@ -2,7 +2,7 @@ import React from 'react';
 import style from './style.less';
 import {Logo} from '../../../logo';
 import {Link} from 'react-router-dom';
-import noPoster from '../../../../source/img/no-poster.jpg';
+import noPoster from '../../../../assets/img/no-poster.jpg';
 import cx from 'classnames';
 import PropTypes from 'prop-types';
 

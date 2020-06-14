@@ -12,10 +12,10 @@ module.exports = (env) => {
             filename: '[name].js',
             path: path.join(__dirname, 'dist'),
         },
-        devtool: 'eval-source-map',
+        devtool: 'eval-assets-map',
         devServer: {
             contentBase: path.resolve(__dirname, 'dist'),
-            // publicPath: '/source/',
+            // publicPath: '/assets/',
             port: 8000,
             hot: true,
             historyApiFallback: {
@@ -78,11 +78,10 @@ module.exports = (env) => {
             new HtmlWebpackPlugin({
                 title: 'Custom template',
                 template: "index.html",
-                filename: "test.html",
             }),
             new CopyWebpackPlugin( {
                 patterns: [
-                    {from: 'source', to: 'source' }
+                    {from: 'assets', to: 'assets' }
                 ]
             })
 

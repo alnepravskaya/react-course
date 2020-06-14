@@ -1,29 +1,12 @@
-export function GetMoviesList({value, searchByValue, sortByValue, genres}) {
-    let url = `https://reactjs-cdp.herokuapp.com/movies?sortBy=${sortByValue}&sortOrder=desc&search=${value}&searchBy=${searchByValue}&limit=9`;
+export function GetMoviesList({query, searchByValue, sortByValue, genres}) {
+    let url = `https://reactjs-cdp.herokuapp.com/movies?sortBy=${sortByValue}&sortOrder=desc&search=${query}&searchBy=${searchByValue}&limit=9`;
     if (genres){
-        url = url + `&filter=${genres}`;
+        url = url + `&filter=${genres.join('%2C%20').replace(' ','%20')}`;
     }
-    fetch(url)
-        .then((response) => {
-            return response.json();
-        })
-        .then((data) => {
-            const event = new CustomEvent('gotMoviesList', {
-                detail: data
-            });
-            document.body.dispatchEvent(event);
-        });
+   return fetch(url).then((response) =>  response.json())
 }
 
 export function getMovieInfo(id){
-    fetch(`https://reactjs-cdp.herokuapp.com/movies/${id}`)
-        .then((response) => {
-            return response.json();
-        })
-        .then((data) => {
-            const event = new CustomEvent('gotMovieInfo', {
-                detail: data
-            });
-            document.body.dispatchEvent(event);
-        });
+    return fetch(`https://reactjs-cdp.herokuapp.com/movies/${id}`)
+        .then((response) =>  response.json());
 }
