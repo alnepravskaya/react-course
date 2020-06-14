@@ -11,13 +11,16 @@ module.exports = (env) => {
         output: {
             filename: '[name].js',
             path: path.join(__dirname, 'dist'),
+            publicPath: '/',
         },
         devtool: 'eval-assets-map',
         devServer: {
             contentBase: path.resolve(__dirname, 'dist'),
             // publicPath: '/assets/',
-            port: 8000,
+            port: 8001,
             hot: true,
+            open: true,
+            writeToDisk: true,
             historyApiFallback: {
                 index: 'index.html'
             }
