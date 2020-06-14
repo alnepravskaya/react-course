@@ -3,5 +3,4 @@ package-lock.json
 .idea
 dist
 .DS_Store
- src/.DS_Store
-
+src/.DS_Store

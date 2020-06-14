@@ -98,6 +98,7 @@ module.exports = (env) => {
         config.devtool = false;
         config.output = {
             filename: '[name].[hash].js',
+            publicPath: '/react-course'
         }
     }
     return config;
