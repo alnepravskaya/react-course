@@ -11,7 +11,7 @@ import MoviePage from './components/moviePage';
 import SearchPage from './components/searchPage';
 
 export const App = () =>  {
-    return <Router>
+    return <Router basename="/calendar">
         <Switch>
             <Route path="/movie/:id">
                 <MoviePage/>
