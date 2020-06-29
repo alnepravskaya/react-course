@@ -54,7 +54,7 @@ class SearchPage extends React.Component {
         return <ErrorBoundary>
             <div className="header">
                 <Search cardsLength={cards.length} match={this.props.match}
-                    submit={this.submitHandler.bind(this)}
+                    submit={(arg) => this.submitHandler(arg)}
                 />
             </div>
             <Cards cards={cards}/>

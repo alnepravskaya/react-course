@@ -21,5 +21,19 @@ export const App = () => {
     </Router>;
 };
 
-ReactDOM.render(<App/>, document.getElementById('root'));
+
+const rootElement = document.getElementById("root");
+
+function renderToApp() {
+    if (rootElement) {
+        ReactDOM.render(<App />, rootElement);
+    }
+}
+
+export { renderToApp };
+
+renderToApp();
+
+
+
 

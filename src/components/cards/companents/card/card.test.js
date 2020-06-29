@@ -1,5 +1,5 @@
 import React from 'react';
-import {mount, shallow} from 'enzyme';
+import { shallow} from 'enzyme';
 import {Card} from './';
 import {describe, expect, it} from '@jest/globals';
 
@@ -39,6 +39,5 @@ describe('Card', () => {
         const component = shallow(<Card className="card" posts={posts}/>);
         expect(component.exists('.card')).toBe(true);
     });
-
 
 });
