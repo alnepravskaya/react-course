@@ -11,7 +11,8 @@
     "start:dev": "webpack-dev-server --watch  --mode=development --env.NODE_ENV=development",
     "start:all": "npm run start:dev || npm run start",
     "start:server": "nodemon server/server",
-    "cypress": "cypress open"
+    "cypress": "cypress open",
+    "coverage": "npm test -- --collectCoverage"
   },
   "author": "alena",
   "license": "ISC",
