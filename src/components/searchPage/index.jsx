@@ -3,7 +3,6 @@ import Search from '../search';
 import {Cards} from '../cards';
 import {ErrorBoundary} from 'react-error-boundary';
 import {GetMoviesList} from '../../api.service';
-import {withRouter} from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 class SearchPage extends React.Component {
@@ -11,19 +10,25 @@ class SearchPage extends React.Component {
         super(props);
         this.state = {
             cards: [],
-            searchByValue: props.match.params.searchBy || 'title',
-            sortByValue: props.match.params.sortBy || 'vote_average',
-            query: props.match.params.query || ''
         };
     }
 
     async componentDidMount() {
-        if (this.state.query !== '') {
-            this.getMoviesList({
-                query: this.state.query,
-                searchByValue: this.state.searchByValue,
-                sortByValue: this.state.sortByValue
+        if (this.props.match) {
+            const {params} = this.props.match;
+            this.setState({
+                searchByValue: params.searchBy || 'title',
+                sortByValue: params.sortBy || 'vote_average',
+                query: params.query || ''
             });
+
+            if (this.state.query) {
+                await  this.getMoviesList({
+                    query: this.state.query,
+                    searchByValue: this.state.searchByValue,
+                    sortByValue: this.state.sortByValue
+                });
+            }
         }
     }
 
@@ -48,7 +53,7 @@ class SearchPage extends React.Component {
         let {cards} = this.state;
         return <ErrorBoundary>
             <div className="header">
-                <Search cardsLength={cards.length}
+                <Search cardsLength={cards.length} match={this.props.match}
                     submit={this.submitHandler.bind(this)}
                 />
             </div>
@@ -57,7 +62,7 @@ class SearchPage extends React.Component {
     }
 }
 
-export default withRouter(SearchPage);
+export default SearchPage;
 
 SearchPage.propTypes = {
     match: PropTypes.object,

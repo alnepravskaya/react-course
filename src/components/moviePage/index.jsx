@@ -3,7 +3,6 @@ import style from './style.less';
 import cx from 'classnames';
 import {Movie} from './components/movie';
 import {Cards} from '../cards';
-import {withRouter} from 'react-router-dom';
 import {getMovieInfo, GetMoviesList} from '../../api.service';
 import {ErrorBoundary} from 'react-error-boundary';
 import PropTypes from 'prop-types';
@@ -52,7 +51,7 @@ class MoviePage extends React.Component {
 }
 
 
-export default withRouter(MoviePage);
+export default MoviePage;
 
 MoviePage.propTypes = {
     match: PropTypes.object,
