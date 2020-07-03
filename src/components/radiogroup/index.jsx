@@ -9,6 +9,7 @@ export const Radiogroup = (props) => (
         {props.buttons.map((button) => <div
             className={cx(style.radio, {[style.active]: button.value === props.value})}
             key={button.value}
+            data-key={button.value}
             onClick={() => props.active(button.value)}
         >
             {button.title}

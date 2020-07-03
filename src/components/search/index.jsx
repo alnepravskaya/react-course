@@ -3,7 +3,6 @@ import style from './style.less';
 import {Radiogroup} from '../radiogroup';
 import {Logo} from '../logo';
 import cx from 'classnames';
-import {withRouter} from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 class Search extends React.Component {
@@ -11,13 +10,14 @@ class Search extends React.Component {
         super(props);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.state = {
-            searchByValue: props.match.params.searchBy || 'title',
-            sortByValue: props.match.params.sortBy || 'vote_average',
-            query: props.match.params.query || ''
+            searchByValue: (props.match && props.match.params.searchBy) || 'title',
+            sortByValue: (props.match && props.match.params.sortBy) || 'vote_average',
+            query: (props.match && props.match.params.query) || ''
         };
         if (this.state.query) {
             this.handleSubmit();
         }
+
     }
 
     handleSubmit(event) {
@@ -78,6 +78,9 @@ class Search extends React.Component {
         </div>;
     }
 }
+
+export default Search;
+
 Search.propTypes = {
     cardsLength: PropTypes.number,
     match: PropTypes.shape({
@@ -91,5 +94,5 @@ Search.propTypes = {
     submit: PropTypes.func,
 };
 
-export default withRouter(Search);
+
 

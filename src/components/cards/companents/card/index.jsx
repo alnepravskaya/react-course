@@ -13,7 +13,7 @@ export class Card extends React.Component {
 
     render() {
         return <Link className={style.card} to={'/movie/' + this.props.posts.id} onClick={()=>this.getMovieInfo(this.props.posts.id)}>
-            <img  src={this.props.posts.poster_path} className={style.picture} onError={(e) => {
+            <img  src={this.props.posts.poster_path} className={style.picture}  onError={(e) => {
                 e.target.setAttribute('src', noPoster);
 
             }}/>
